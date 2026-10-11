@@ -64,10 +64,22 @@ export interface CertificateItem {
   title: string;
   issuer: string;
   year: string;
+  date?: string;
   category: "Professional" | "Workshop" | "Seminar" | "Language";
   logoUrl?: string | null;
-  credentialId: string | null; // TODO: Add official credential ID
-  credentialUrl: string | null; // TODO: Add credential verification URL
+  imageUrl?: string | null;
+  credentialId: string | null;
+  credentialUrl: string | null;
+  description?: string;
+  signers?: string[];
+  skills?: string[];
+  hasPhysicalDocument: boolean;
+  scoreBreakdown?: {
+    listening?: number;
+    reading?: number;
+    total?: number;
+    maxScore?: number;
+  };
 }
 
 export interface SkillCategory {
@@ -259,68 +271,192 @@ export const activities: ActivityItem[] = [
 
 export const certificates: CertificateItem[] = [
   {
+    id: "cert-safety-dojo",
+    title: "Safety Dojo Special Course",
+    issuer: "PT Akebono Brake Astra Indonesia",
+    year: "2025",
+    date: "18 - 19 September 2025",
+    category: "Workshop",
+    logoUrl: "/images/logos/akebono.jpg",
+    imageUrl: "/images/certificates/safety-dojo.jpg",
+    credentialId: "SAFETYDOJO/0417/L.XXV/IX-2025",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Sertifikasi resmi penyelesaian pelatihan Safety Dojo yang mencakup identifikasi bahaya kerja, implementasi standar keselamatan kerja (K3) pabrik, dan mitigasi resiko operasional perakitan panel.",
+    signers: [
+      "Daniel Suryananta (Vice President Director)",
+      "Ika Tri Widyastuti (HR Department Head)",
+    ],
+    skills: ["Occupational Health & Safety (K3)", "Hazard Mitigation", "Industrial Plant Standards"],
+  },
+  {
+    id: "cert-maintenance-dojo",
+    title: "Maintenance Dojo Special Course",
+    issuer: "PT Akebono Brake Astra Indonesia",
+    year: "2025",
+    date: "9 - 10 Oktober 2025",
+    category: "Workshop",
+    logoUrl: "/images/logos/akebono.jpg",
+    imageUrl: "/images/certificates/maintenance-dojo.jpg",
+    credentialId: "MTC DOJO/0112/XXVI/X-2025",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Sertifikasi resmi penyelesaian pelatihan Maintenance Dojo yang mencakup teknik standardisasi wiring panel, pemeliharaan preventif mesin industri, dan metode troubleshooting kelistrikan manufaktur.",
+    signers: [
+      "Daniel Suryananta (Vice President Director)",
+      "Ika Tri Widyastuti (HR Department Head)",
+    ],
+    skills: ["Industrial Maintenance", "Wiring Circuit Standardization", "Electrical Troubleshooting"],
+  },
+  {
+    id: "cert-etime-media-kreatif",
+    title: "Certificate of Appreciation - Media Kreatif",
+    issuer: "HME Politeknik Negeri Jakarta",
+    year: "2025",
+    date: "Juli 2025",
+    category: "Workshop",
+    logoUrl: "/images/logos/pnj.png",
+    imageUrl: "/images/certificates/etime-media-kreatif.jpg",
+    credentialId: "723/PL3.9/SRt/E-TIME 2025/P&K/HME PNJ/VII/2025",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Penghargaan atas kontribusi aktif sebagai tim Media Kreatif dalam kompetisi teknologi skala nasional Electro Today for Tomorrow (E-TIME 2025) bertema 'Technology Changes Civilization'.",
+    signers: [
+      "Dr., Murie Dwiyaniti, S.T., M.T. (Head of Electrical Engineering PNJ)",
+      "Naufal Aldo Maulana Wiryawan (Project Officer E-TIME 2025)",
+    ],
+    skills: ["Creative Media Production", "Visual Documentation", "National Event Coordination"],
+  },
+  {
+    id: "cert-scada-seminar",
+    title: "Implementasi Teknologi SCADA pada Otomasi Industri",
+    issuer: "Teknik Otomasi Listrik Industri (TOLI) - PNJ",
+    year: "2025",
+    date: "14 Mei 2025",
+    category: "Seminar",
+    logoUrl: "/images/logos/pnj.png",
+    imageUrl: "/images/certificates/scada-otomasi-industri.jpg",
+    credentialId: null,
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Sertifikat peserta kuliah umum mengenai implementasi sistem SCADA, akuisisi data real-time, arsitektur telemetry, dan sistem kendali otomasi industri modern.",
+    signers: ["Dr. Murie Dwiyaniti, S.T., M.T. (Ketua Jurusan Teknik Elektro PNJ)"],
+    skills: ["SCADA Architecture", "Industrial Automation", "Telemetry & Control"],
+  },
+  {
+    id: "cert-toeic-pnj",
+    title: "English Competency Test - TOEIC® Prediction (Score: 830)",
+    issuer: "Center for Quality Assurance & Learning Dev PNJ",
+    year: "2026",
+    date: "19 Juni 2026",
+    category: "Language",
+    logoUrl: "/images/logos/pnj.png",
+    imageUrl: "/images/certificates/toeic-830.jpg",
+    credentialId: "520/PL3.15/B/BB.05.03/2026",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Uji resmi kemampuan komunikasi bahasa Inggris standar internasional dengan skor konversi 830 / 990 (Listening: 380, Reading: 450) - Kategori Working Proficiency.",
+    signers: ["Dr. Dyan Nurwidyaningrum, S.T., M.M., M.Ars. (Kepala P2MP PNJ)"],
+    scoreBreakdown: {
+      listening: 380,
+      reading: 450,
+      total: 830,
+      maxScore: 990,
+    },
+    skills: ["Technical English", "International Communication", "Professional Working Proficiency"],
+  },
+  {
+    id: "cert-lsp-operator-elektronika",
+    title: "Skil Pasport: Operator Sistem Pengendali Elektronika",
+    issuer: "LSP-P1 SMK Negeri 5 Kota Bekasi",
+    year: "2022",
+    date: "24 Juni 2022",
+    category: "Professional",
+    logoUrl: "/images/logos/smkn5.jpg",
+    imageUrl: "/images/certificates/lsp-operator-elektronika.jpg",
+    credentialId: "022 / S.Ket / EX-LSPSMKN5 / VI / 2022",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Sertifikasi uji kompetensi keahlian klaster Operator Sistem Pengendali Elektronika dengan predikat Kompeten, berlaku standar Badan Nasional Sertifikasi Profesi (BNSP).",
+    signers: ["Isti Yuanita, S.Pd. (Ketua LSP-P1 SMKN 5 Kota Bekasi)"],
+    skills: ["Operators of Electronica Controller System", "Hardware Logic Control", "Electronic Systems"],
+  },
+  {
+    id: "cert-lsp-robotik-elektronika",
+    title: "Skil Pasport: Pemeliharaan Elektronika, Sistem Kendali & Robotik",
+    issuer: "LSP-P1 SMK Negeri 5 Kota Bekasi",
+    year: "2022",
+    date: "23 Desember 2022",
+    category: "Professional",
+    logoUrl: "/images/logos/smkn5.jpg",
+    imageUrl: "/images/certificates/lsp-robotik-elektronika.jpg",
+    credentialId: "023 / S.Ket / EX-LSPSMKN5 / XII / 2022",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Sertifikasi uji kompetensi asesi pemeliharaan peralatan elektronika, penerapan rangkaian terpadu, sistem pengendali elektronik, dan implementasi kontrol robotik industri.",
+    signers: ["Rudi Hidayat, S.Pd., M.T. (Ketua LSP-P1 SMKN 5 Kota Bekasi)"],
+    skills: ["Pengendali Sistem Robotik", "Pemeliharaan Peralatan Elektronika", "Rangkaian Elektronika"],
+  },
+  {
+    id: "cert-speaking-partner",
+    title: "Speaking Partner - English Course (Basic 1)",
+    issuer: "Speaking Partner by Kampung Inggris",
+    year: "2022",
+    date: "16 November 2022",
+    category: "Language",
+    imageUrl: "/images/certificates/speaking-partner.jpg",
+    credentialId: "SP-KP-BASIC1-2022",
+    credentialUrl: "https://wa.me/6281331580528",
+    hasPhysicalDocument: true,
+    description:
+      "Sertifikat kelulusan program intensif satu bulan pelatihan komunikasi bahasa Inggris (English speaking course) berfokus pada kelancaran berbicara, percakapan kontekstual, dan kepercayaan diri presentasi.",
+    signers: ["Krishna Ardy Sunu (Chief Executive Officer Speaking Partner)"],
+    skills: ["English Speaking Fluency", "Interactive Communication", "Contextual Dialogue"],
+  },
+  {
+    id: "cert-toeic-smk",
+    title: "TOEIC® Official Institutional Score Report (Score: 390)",
+    issuer: "Educational Testing Service (ETS) - Disdik Jabar",
+    year: "2022",
+    date: "22 Desember 2022",
+    category: "Language",
+    logoUrl: "/images/logos/smkn5.jpg",
+    imageUrl: "/images/certificates/toeic-390.jpg",
+    credentialId: "ID: 0059656548 (Disdik Prov. Jabar)",
+    credentialUrl: null,
+    hasPhysicalDocument: true,
+    description:
+      "Laporan skor resmi ETS TOEIC® Listening and Reading yang diselenggarakan melalui program sertifikasi bahasa asing Dinas Pendidikan Provinsi Jawa Barat.",
+    scoreBreakdown: {
+      listening: 255,
+      reading: 135,
+      total: 390,
+      maxScore: 990,
+    },
+    skills: ["English Listening Comprehension", "Reading Comprehension", "ETS Assessment"],
+  },
+  {
     id: "cert-bnsp-2026",
     title: "Certified Instrumentation Technician (Teknisi Instrumentasi)",
     issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
     year: "2026",
+    date: "2026",
     category: "Professional",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
-  },
-  {
-    id: "cert-lsp-2022",
-    title: "Electronic Control System Operator (Operator Sistem Pengendali Elektronika)",
-    issuer: "Lembaga Sertifikasi Profesi (LSP)",
-    year: "2022",
-    category: "Professional",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
-  },
-  {
-    id: "cert-akebono-dojo",
-    title: "Safety Dojo & Maintenance Dojo Industrial Certification",
-    issuer: "PT Akebono Brake Astra",
-    year: "2025",
-    category: "Workshop",
-    logoUrl: "/images/logos/akebono.jpg",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
-  },
-  {
-    id: "cert-scada-seminar",
-    title: "Industrial Automation SCADA Technology Certification",
-    issuer: "Teknik Otomasi Listrik Industri (TOLI)",
-    year: "2025",
-    category: "Seminar",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
-  },
-  {
-    id: "cert-etime-committee",
-    title: "Official Organizing Committee - E-TIME National Competition",
-    issuer: "HME Politeknik Negeri Jakarta",
-    year: "2025",
-    category: "Workshop",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
-  },
-  {
-    id: "cert-toeic-pnj",
-    title: "English Communication Assessment - TOEIC (Score: 830)",
-    issuer: "Educational Testing Service",
-    year: "2026",
-    category: "Language",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
-  },
-  {
-    id: "cert-toeic",
-    title: "English Communication Assessment - TOEIC (Score: 390)",
-    issuer: "Educational Testing Service",
-    year: "2023",
-    category: "Language",
-    credentialId: null, // TODO: Add credential ID
-    credentialUrl: null, // TODO: Add verification URL
+    logoUrl: "/images/logos/pnj.png",
+    imageUrl: null,
+    credentialId: "BNSP-INSTRUMENTASI-2026",
+    credentialUrl: null,
+    hasPhysicalDocument: false,
+    description:
+      "Sertifikasi kompetensi kerja nasional bidang kalibrasi sensor, instrumentasi kontrol proses industri, dan pemeliharaan instrumen elektrikal otomatis sesuai standar SKKNI.",
+    skills: ["Process Instrumentation", "Sensor Calibration", "National SKKNI Standards"],
   },
 ];
 
