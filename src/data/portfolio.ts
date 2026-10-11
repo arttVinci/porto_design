@@ -87,7 +87,7 @@ export const personalInfo: PersonalInfo = {
   birthDate: "September 9, 2005",
   email: "tiarrizkybudiyono@gmail.com",
   phone: "+62 896-3696-9742",
-  linkedin: "https://linkedin.com", // TODO: Add specific LinkedIn handle
+  linkedin: "https://www.linkedin.com/in/tiar-rizky",
   github: null, // TODO: Add GitHub profile URL
   cvPdfPath: "/docs/cv.pdf",
   avatarUrl: "/images/profile.png",
@@ -142,7 +142,7 @@ export const education: EducationItem[] = [
     certifications: [
       "Certified Instrumentation Technician - Badan Nasional Sertifikasi Profesi (BNSP) 2026",
     ],
-    languageScore: "TOEFL Score: 830",
+    languageScore: "TOEIC Score: 830",
   },
   {
     id: "smkn5",
@@ -305,9 +305,9 @@ export const certificates: CertificateItem[] = [
     credentialUrl: null, // TODO: Add verification URL
   },
   {
-    id: "cert-toefl",
-    title: "English Proficiency Assessment - TOEFL (Score: 830)",
-    issuer: "Institutional Testing Program",
+    id: "cert-toeic-pnj",
+    title: "English Communication Assessment - TOEIC (Score: 830)",
+    issuer: "Educational Testing Service",
     year: "2026",
     category: "Language",
     credentialId: null, // TODO: Add credential ID
